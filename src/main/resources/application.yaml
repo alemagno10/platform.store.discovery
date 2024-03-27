@@ -1,15 +1,22 @@
 server:
   port: 8761
-
+  
 spring:
   application:
-    name: spring-discovery
+    name: store-discovery
+
+management:
+  endpoints:
+    web:
+      base-path: /discovery/actuator
+      exposure:
+        include: [ 'prometheus' ]
 
 eureka:
   instance:
     prefer-ip-address: true
-    leaseRenewalIntervalInSeconds: 10
-    leaseExpirationDurationInSeconds: 30
+    lease-renewal-interval-in-seconds: 30
+    lease-expiration-duration-in-seconds: 90
   client:
     registerWithEureka: false
     fetchRegistry: false
